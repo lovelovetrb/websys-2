@@ -1,22 +1,22 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { SubmitHandler, useForm } from "react-hook-form";
-
-type Inputs = {
-  sex: string;
-  age: number;
-  satisfaction: number;
-  books: string | undefined;
-};
+import { data } from "../types/type";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 export default function Home() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    alert(JSON.stringify(data));
+    reset,
+  } = useForm<data>();
+  const onSubmit: SubmitHandler<data> = async (formData) => {
+    await axios.post("api/data", formData);
+    alert()
+    reset();
   };
 
   return (
