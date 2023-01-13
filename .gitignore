@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# firebase
+websys-2-firebase-adminsdk-x1py6-12b2685c29.json

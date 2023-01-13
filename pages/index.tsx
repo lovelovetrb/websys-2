@@ -2,11 +2,9 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { data } from "../types/type";
-import { useRouter } from "next/router";
 import axios from "axios";
 
 export default function Home() {
-  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -14,8 +12,27 @@ export default function Home() {
     reset,
   } = useForm<data>();
   const onSubmit: SubmitHandler<data> = async (formData) => {
-    await axios.post("api/data", formData);
-    alert()
+    const submitData = {
+      1: {
+        question: "性別",
+        answer: formData.sex,
+      },
+      2: {
+        question: "年齢",
+        answer: formData.age,
+      },
+      3: {
+        question: "満足度",
+        answer: formData.satisfaction,
+      },
+      4: {
+        question: "おすすめの本",
+        answer: formData.books,
+      },
+    };
+
+    await axios.post("api/post", submitData);
+    alert("送信が完了しました");
     reset();
   };
 
@@ -29,11 +46,11 @@ export default function Home() {
       </Head>
       <main className="container mt-5">
         <h2 className={styles.title}>
-          <span>アンケート</span>
+          <span>A店　お客様アンケート</span>
         </h2>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="" className={`mt-3 ${styles.label}`}>
-            Q1:性別
+            Q1:性別(必須)
           </label>
           <div>
             <label htmlFor="male">
@@ -75,7 +92,7 @@ export default function Home() {
             </label>
           </div>
           <label htmlFor="" className={`mt-3 ${styles.label}`}>
-            Q2:年齢
+            Q2:年齢(必須)
           </label>
           <div>
             <select id="" {...register("age", { required: true })}>
@@ -92,19 +109,17 @@ export default function Home() {
             </select>
           </div>
           <label htmlFor="" className={`mt-3 ${styles.label}`}>
-            Q3:Y書店の満足度
+            Q3:Y書店の満足度(必須)
           </label>
           <div className="mt-1">
             <label htmlFor="satisfaction-5">
               <input
-                {...register("satisfaction", { required: true })}
                 required
                 className={styles.radio}
                 type="radio"
-                name="satisfaction"
                 value="5"
+                {...register("satisfaction", { required: true })}
                 id="satisfaction-5"
-                checked
               />
               とても満足
             </label>
@@ -112,11 +127,11 @@ export default function Home() {
           <div>
             <label htmlFor="satisfaction-4">
               <input
-                {...register("satisfaction", { required: true })}
+                required
                 className={styles.radio}
                 type="radio"
-                name="satisfaction"
                 value="4"
+                {...register("satisfaction", { required: true })}
                 id="satisfaction-4"
               />
               満足
@@ -125,11 +140,11 @@ export default function Home() {
           <div>
             <label htmlFor="satisfaction-3">
               <input
-                {...register("satisfaction", { required: true })}
+                required
                 className={styles.radio}
                 type="radio"
-                name="satisfaction"
                 value="3"
+                {...register("satisfaction", { required: true })}
                 id="satisfaction-3"
               />
               どちらでもない
@@ -138,11 +153,11 @@ export default function Home() {
           <div>
             <label htmlFor="satisfaction-2">
               <input
-                {...register("satisfaction", { required: true })}
+                required
                 className={styles.radio}
                 type="radio"
-                name="satisfaction"
                 value="2"
+                {...register("satisfaction", { required: true })}
                 id="satisfaction-2"
               />
               不満
@@ -151,11 +166,11 @@ export default function Home() {
           <div>
             <label htmlFor="satisfaction-1">
               <input
-                {...register("satisfaction", { required: true })}
                 className={styles.radio}
+                required
                 type="radio"
-                name="satisfaction"
                 value="1"
+                {...register("satisfaction", { required: true })}
                 id="satisfaction-1"
               />
               とても不満
@@ -164,11 +179,13 @@ export default function Home() {
           <label htmlFor="" className={`mt-3 ${styles.label}`}>
             Q4:最近買ってよかった本
           </label>
+          <p>一冊ごとに改行してください</p>
           <div>
-            <input
-              {...register("books")}
-              type="text"
+            <textarea
               className={`${styles.text} p-3`}
+              rows={4}
+              cols={40}
+              {...register("books")}
             />
           </div>
           <input className="btn btn-primary mt-3" type="submit" value="送信" />
