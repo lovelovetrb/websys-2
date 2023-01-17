@@ -18,7 +18,12 @@ const analysys = () => {
       });
   }, []);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <h3 className="d-flex align-items-center justify-content-center vh-100">
+        Loading...
+      </h3>
+    );
   if (data.length == 0) return <p>No profile data</p>;
 
   const questionList: number[] = [1, 2, 3, 4];

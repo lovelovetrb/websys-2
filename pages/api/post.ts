@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 const { cert } = require("firebase-admin/app");
 const { getFirestore } = require("firebase-admin/firestore");
-const serviceAccount = require("../../websys-2-firebase-adminsdk-x1py6-12b2685c29.json");
+const serviceAccount = require("../../websys-2-firebase-adminsdk-x1py6-791e9622bd.json");
 const admin = require("firebase-admin");
 
 export default function Handler(req: NextApiRequest, res: NextApiResponse) {
