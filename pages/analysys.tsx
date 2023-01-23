@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import QuestionResult from "../Components/QuestionResult";
 import { data } from "../types/type";
-import NowDate from "../Components/date";
+import NowDate from "../Components/Date";
 
 const analysys = () => {
   const [data, setData] = useState<data[]>([]);
