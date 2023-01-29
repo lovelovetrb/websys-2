@@ -10,7 +10,17 @@ const Check = () => {
   const formData = useSelector((state: RootState) => state);
   console.log(formData.form);
   const fetchData = () => {
-    axios.post("/api/post", formData);
+    const data = {
+      name: formData.form.name,
+      email: formData.form.email,
+      age: formData.form.age,
+      sex: enSex2jaSex(formData.form.sex),
+      shop: `${getPref(formData.form.pref)} ${formData.form.shop}`,
+      frequency: formData.form.frequency,
+      satisfaction: formData.form.satisfaction,
+      other: formData.form.other,
+    };
+    axios.post("/api/post", data);
     Router.push("/thanks");
   };
   return (
