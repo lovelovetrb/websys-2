@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { data } from "../../types/type";
+import { data, shop } from "../../types/type";
 
 const { cert } = require("firebase-admin/app");
 const { getFirestore } = require("firebase-admin/firestore");
@@ -10,11 +10,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const data = await getData();
+  const data = await getData(req.query.shop);
   res.status(200).json(data);
 }
 
-export async function getData() {
+export async function getData(query: any) {
+  console.log(query);
   //　初期化する
   if (admin.apps.length === 0) {
     admin.initializeApp({
@@ -22,8 +23,8 @@ export async function getData() {
     });
   }
   const db = getFirestore();
-  const COLLECTION_NAME = "questionnaireData";
-  const dataList: any[] = [];
+  const COLLECTION_NAME = query;
+  const dataList: shop[] = [];
   const docRef = db.collection(COLLECTION_NAME);
   const snapshot = await docRef.get();
   snapshot.forEach((doc: { id: any; data: () => any }) => {

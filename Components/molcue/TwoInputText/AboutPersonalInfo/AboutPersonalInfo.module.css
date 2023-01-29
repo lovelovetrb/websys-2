@@ -1,0 +1,17 @@
+.label {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.personalInfo {
+  height: 200px;
+  width: 100%;
+  overflow-y: scroll;
+  margin: 15px auto;
+  padding: 15px 25px;
+  letter-spacing: 1px;
+  line-height: 25px;
+  border: #203674 solid 3px;
+  border-radius: 10px;
+}

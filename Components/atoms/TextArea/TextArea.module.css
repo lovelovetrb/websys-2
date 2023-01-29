@@ -1,0 +1,11 @@
+.text {
+  line-height: 180%;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .text {
+    font-size: 15px;
+  }
+}

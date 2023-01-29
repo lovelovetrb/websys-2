@@ -1,0 +1,22 @@
+.form {
+  min-width: 70%;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.innner {
+  border: #203674 solid 3px;
+  border-radius: 10px;
+  padding: 40px;
+}
+
+@media screen and (max-width: 600px) {
+  .form {
+    min-width: 90%;
+    width: 90%;
+  }
+
+  .innner {
+    padding: 20px;
+  }
+}

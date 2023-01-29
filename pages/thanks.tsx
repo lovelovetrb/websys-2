@@ -1,16 +1,18 @@
 import Head from "next/head";
+import React from "react";
 import Header from "../Components/Base/Header/Header";
-import Footer from "../Components/Base/Footer/Footer";
-import Form from "../Components/Form/Form";
-import Headline from "../Components/atoms/Headline/Headline";
 import Statusbar from "../Components/atoms/Statusbar/Statusbar";
+import Headline from "../Components/atoms/Headline/Headline";
+import Footer from "../Components/Base/Footer/Footer";
+import TextArea from "../Components/atoms/TextArea/TextArea";
 
-export default function Home() {
+const thanks = () => {
   const statusContent: string[] = [
     "アンケート入力",
     "回答確認",
     "アンケート送信",
   ];
+
   return (
     <>
       <Head>
@@ -22,10 +24,16 @@ export default function Home() {
       <Header />
       <main>
         <Headline subject="お客様アンケート" />
-        <Statusbar status={statusContent} location={0} />
-        <Form />
+        <Statusbar status={statusContent} location={2} />
+        <div style={{ margin: "100px auto", textAlign: "center" }}>
+          <TextArea text="アンケートの送信が完了しました" />
+          <TextArea text="ご協力ありがとうございました" />
+        </div>
       </main>
       <Footer />
     </>
   );
-}
+  return <></>;
+};
+
+export default thanks;

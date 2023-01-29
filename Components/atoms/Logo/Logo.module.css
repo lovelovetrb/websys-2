@@ -1,0 +1,13 @@
+.companyName {
+  color: #203674;
+  letter-spacing: 3px;
+  font-weight: 700;
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .companyName {
+    font-size: 25px;
+  }
+}
