@@ -10,8 +10,4 @@ export type data = {
   other: string;
 };
 
-export type shop = {
-  shop: string[];
-};
-
 export type selectList = { label: string; value: any }[];

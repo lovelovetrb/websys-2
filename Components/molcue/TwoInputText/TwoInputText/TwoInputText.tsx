@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import InputSelect from "../../../atoms/input_select/InputSelect";
 import css from "./TwoInputText.module.css";
-import { selectList, shop } from "../../../../types/type";
+import { selectList } from "../../../../types/type";
 import { RootState } from "../../../../store";
 import { useSelector } from "react-redux";
 
@@ -12,7 +12,7 @@ type Props = {
 };
 
 const TwoInputText = ({ label, register, errors }: Props) => {
-  const [shopList, setShopList] = useState<shop[]>([]);
+  const [shopList, setShopList] = useState<any[]>([]);
   const [nowShopList, setNowShopList] = useState<selectList>([]);
   const formData = useSelector((state: RootState) => state.form);
 

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { data, shop } from "../../types/type";
+import { data } from "../../types/type";
 
 const { cert } = require("firebase-admin/app");
 const { getFirestore } = require("firebase-admin/firestore");
@@ -24,7 +24,7 @@ export async function getData(query: any) {
   }
   const db = getFirestore();
   const COLLECTION_NAME = query;
-  const dataList: shop[] = [];
+  const dataList: any[] = [];
   const docRef = db.collection(COLLECTION_NAME);
   const snapshot = await docRef.get();
   snapshot.forEach((doc: { id: any; data: () => any }) => {
