@@ -21,7 +21,7 @@ const Check = () => {
       other: formData.form.other,
     };
     await axios.post("/api/post", data);
-    Router.push("/thanks");
+    await Router.push("/thanks");
   };
   return (
     <div className={css.check}>

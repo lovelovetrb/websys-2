@@ -132,7 +132,7 @@ function Form() {
         />
         <AboutPersonalInfo />
       </div>
-      <Button text="入力内容確認" onClickFunc={undefined} />
+      <Button text="入力内容確認" onClickFunc={() => {}} />
     </form>
   );
 }
