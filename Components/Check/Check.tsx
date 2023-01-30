@@ -9,7 +9,7 @@ import Router from "next/router";
 const Check = () => {
   const formData = useSelector((state: RootState) => state);
   console.log(formData.form);
-  const fetchData = () => {
+  const fetchData = async () => {
     const data = {
       name: formData.form.name,
       email: formData.form.email,
@@ -20,7 +20,7 @@ const Check = () => {
       satisfaction: formData.form.satisfaction,
       other: formData.form.other,
     };
-    axios.post("/api/post", data);
+    await axios.post("/api/post", data);
     Router.push("/thanks");
   };
   return (
