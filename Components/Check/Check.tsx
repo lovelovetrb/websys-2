@@ -20,8 +20,9 @@ const Check = () => {
       satisfaction: formData.form.satisfaction,
       other: formData.form.other,
     };
-    await axios.post("/api/post", data);
-    Router.push("/thanks");
+    await axios.post("/api/post", data).then(() => {
+      Router.push("/thanks");
+    });
   };
   return (
     <div className={css.check}>
