@@ -16,10 +16,6 @@ const Thanks = () => {
     "アンケート送信",
   ];
 
-  useEffect(() => {
-    window.location.reload();
-  }, []);
-
   return (
     <>
       <Head>

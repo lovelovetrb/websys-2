@@ -6,7 +6,10 @@ const { getFirestore } = require("firebase-admin/firestore");
 const serviceAccount = require("../../websys-2-firebase-adminsdk-x1py6-791e9622bd.json");
 const admin = require("firebase-admin");
 
-export default function Handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function Handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (admin.apps.length === 0) {
     admin.initializeApp({
       credential: cert(serviceAccount),
@@ -16,5 +19,8 @@ export default function Handler(req: NextApiRequest, res: NextApiResponse) {
   const db = getFirestore();
   const docRef = db.collection(COLLECTION_NAME).doc();
   const insertData = req.body;
-  docRef.set(insertData).then(res.status(200).end()).catch(res.status(500).end);
+  await docRef
+    .set(insertData)
+    .then(res.status(200).end())
+    .catch(res.status(500).end);
 }
