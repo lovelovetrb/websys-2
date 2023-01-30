@@ -16,7 +16,7 @@ const InputText = ({ label, id, selectList, register, errors }: Props) => {
       <div className={css.wrapper}>
         <label htmlFor={id}>
           <p className={css.label}>{label}</p>
-          <select className={css.input} id={id} {...register(id, { require })}>
+          <select className={css.input} id={id} {...register(id)}>
             {selectList.map((item, index) => {
               return (
                 <option key={index} value={item.value} className={css.option}>

@@ -5,6 +5,9 @@ import Statusbar from "../Components/atoms/Statusbar/Statusbar";
 import Headline from "../Components/atoms/Headline/Headline";
 import Footer from "../Components/Base/Footer/Footer";
 import TextArea from "../Components/atoms/TextArea/TextArea";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 const thanks = () => {
   const statusContent: string[] = [
