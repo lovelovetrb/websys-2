@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../Components/Base/Header/Header";
 import Statusbar from "../Components/atoms/Statusbar/Statusbar";
 import Headline from "../Components/atoms/Headline/Headline";
@@ -9,12 +9,16 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 
-const thanks = () => {
+const Thanks = () => {
   const statusContent: string[] = [
     "アンケート入力",
     "回答確認",
     "アンケート送信",
   ];
+
+  useEffect(() => {
+    window.location.reload();
+  }, []);
 
   return (
     <>
@@ -39,4 +43,4 @@ const thanks = () => {
   return <></>;
 };
 
-export default thanks;
+export default Thanks;
