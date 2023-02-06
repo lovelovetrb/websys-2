@@ -11,6 +11,7 @@ type Props = {
 };
 
 const InputText = ({ label, id, selectList, register, errors }: Props) => {
+  console.log();
   return (
     <>
       <div className={css.wrapper}>

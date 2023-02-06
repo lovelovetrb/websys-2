@@ -15,12 +15,21 @@ export default async function Handler(
       credential: cert(serviceAccount),
     });
   }
-  const COLLECTION_NAME = "questionnaireData";
+  const COLLECTION_NAME = "shop";
   const db = getFirestore();
-  const docRef = db.collection(COLLECTION_NAME).doc();
-  const insertData = req.body;
-  await docRef
-    .set(insertData)
-    .then(res.status(200).end())
-    .catch(res.status(500).end());
+  const docRef = db.collection(COLLECTION_NAME);
+  const shopData = [
+    { label: "未選択", value: "未選択" },
+    { label: "AA店", value: "AA店" },
+    { label: "BB店", value: "BB店" },
+  ];
+
+  for (let i: number = 0; i < 47; i++) {
+    await docRef
+      .doc(String(i + 1))
+      .set({ shopID: i + 1, shopData })
+      .then(res.status(200).end())
+      .catch(res.status(500).end());
+  }
+  res.status(200);
 }

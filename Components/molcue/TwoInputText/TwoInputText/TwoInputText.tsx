@@ -18,7 +18,7 @@ const TwoInputText = ({ label, register, errors }: Props) => {
 
   useEffect(() => {
     async function fetchData() {
-      await fetch("api/get?shop=shop")
+      await fetch("api/getShop?shop=shop")
         .then((res) => res.json())
         .then((data) => setShopList(data));
     }
@@ -27,7 +27,7 @@ const TwoInputText = ({ label, register, errors }: Props) => {
 
   useEffect(() => {
     const tempShopList = shopList[formData.pref - 1]
-      ? shopList[formData.pref - 1][formData.pref]
+      ? shopList[formData.pref - 1]["shopData"]
       : [
           {
             label: "店舗が見つかりません",
